@@ -16,7 +16,7 @@ bool operator==(const Point2D &a, const Point2D &b) {
 }
 
 bool operator!=(const Point2D &a, const Point2D &b) {
-	return (a.x != b.x && a.y == b.y);
+	return (a.x != b.x && a.y != b.y);
 }
 
 std::ostream& operator<<(std::ostream &out, const Point2D &p) {

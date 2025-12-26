@@ -1,4 +1,4 @@
-#ifndef Point2D_H
+#ifndef POINT2D_H
 #define POINT2D_H
 
 #include <ostream>
