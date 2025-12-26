@@ -29,7 +29,7 @@ class ListLinked : public List<T> {
 
 		void insert(int pos, T e) override {
 			if (pos < 0 || pos > n) {
-				throw std::out_of_range("Posición errónea");
+				throw std::out_of_range("Posición inválida!");
 			}
 			if (pos == 0) {
 				first = new Node<T>(e, first);
@@ -53,7 +53,7 @@ class ListLinked : public List<T> {
 
 		T remove(int pos) override {
 			if (pos < 0 || pos >= n) {
-				throw std::out_of_range("Posición errónea");
+				throw std::out_of_range("Posición inválida!");
 			}
 			Node<T>* objetivo;
 			T elemento_eliminado;
@@ -76,9 +76,9 @@ class ListLinked : public List<T> {
 			return elemento_eliminado;
 		}
 
-		T get(int pos) override {
+		T get(int pos) const override {
 			if (pos < 0 || pos >= n) {
-				throw std::out_of_range("Posición errónea");
+				throw std::out_of_range("Posición inválida!");
 			}
 
 			Node<T>* current = first;
@@ -89,7 +89,7 @@ class ListLinked : public List<T> {
 			return current->data;
 		}
 
-		int search(T e) override {
+		int search(T e) const override {
 			Node<T>* current = first;
 			int pos = 0;
 
@@ -103,11 +103,11 @@ class ListLinked : public List<T> {
 			return -1;
 		}
 
-		bool empty() override {
+		bool empty() const override {
 			return n== 0;
 		}
 
-		int size() override{
+		int size() const override{
 			return n;
 		}
 
@@ -117,15 +117,19 @@ class ListLinked : public List<T> {
 
 		friend std::ostream& operator<<(std::ostream &out, const ListLinked<T> &list) {
 			Node<T>* current = list.first;
-			out << "ListLinked -> [";
+
+			if (current == nullptr) {
+				out << "List -> []";
+				return out;
+			}
+
+			out << "List -> [\n";
 
 			while (current != nullptr) {
-				out << current->data;
-				if (current->next != nullptr) {
-					out << ", ";
-				}
+				out << " " << current->data << "\n";
 				current = current->next;
 			}
+
 			out << "]";
 			return out;
 		}
