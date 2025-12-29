@@ -43,7 +43,7 @@ void Square::print(std::ostream &out) const{
 }
 
 std::ostream& operator<<(std::ostream &out, const Square &square) {
-	out << "[Square: color = " << square.color
+	out << "[Cuadrado: Color = " << square.color
 	    << "; v0 = " << square.vs[0]
 	    << "; v1 = " << square.vs[1]
 	    << "; v2 = " << square.vs[2]

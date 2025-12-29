@@ -21,21 +21,37 @@ bin/testPoint2D: testPoint2D.cpp Point2D.o
 shape.o: Shape.cpp Shape.h
 	g++ -c Shape.cpp
 
+Circle.o: Circle.cpp Circle.h
+	g++ -c Rectangle.cpp
+
 bin/testCircle: testCircle.cpp Circle.o Shape.o Point2D.o
 	g++ -c testCircle.cpp
 	mkdir -p bin
 	g++ -o bin/testCircle testCircle.o Circle.o Shape.o Point2D.o
+
+Rectangle.o: Rectangle.cpp Rectangle.h
+	g++ -c Rectangle.cpp
 
 bin/testRectangle: testRectangle.cpp Rectangle.o Shape.o Point2D.o
 	g++ -c testRectangle.cpp
 	mkdir -p bin
 	g++ -o bin/testRectangle testRectangle.o Rectangle.o Shape.o Point2D.o
 
+Square.o: Square.cpp Square.h
+	g++ -c Square.cpp
+
 bin/testSquare: testSquare.cpp Square.o Rectangle.o Shape.o Point2D.o
 	g++ -c testSquare.cpp
 	mkdir -p bin
 	g++ -o bin/testSquare testSquare.o Square.o Rectangle.o Shape.o Point2D.o
 
+Drawing.o: Drawing.cpp Drawing.h
+	g++ -c Drawing.cpp
+
+bin/testDrawing: testDrawing.cpp Drawing.o Square.o Circle.o Shape.o Rectangle.o Point2D.o
+	g++ -c testDrawing.cpp
+	mkdir -p bin
+	g++ -o bin/testDrawing testDrawing.o Drawing.o Square.o Circle.o Shape.o Rectangle.o Point2D.o
 
 clean:
 	rm -r *.o *.gch bin
