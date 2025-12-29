@@ -22,7 +22,7 @@ shape.o: Shape.cpp Shape.h
 	g++ -c Shape.cpp
 
 Circle.o: Circle.cpp Circle.h
-	g++ -c Rectangle.cpp
+	g++ -c Circle.cpp
 
 bin/testCircle: testCircle.cpp Circle.o Shape.o Point2D.o
 	g++ -c testCircle.cpp
